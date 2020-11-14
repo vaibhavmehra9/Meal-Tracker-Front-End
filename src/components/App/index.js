@@ -1,11 +1,14 @@
 import React from "react";
 import Nav from "../Nav";
+import AppRoutes from "../AppRoutes";
 
 function App() {
   return (
     <React.Fragment>
-      <Nav></Nav>
-      <div className="container"></div>
+      <Nav />
+      <div className="container">
+        <AppRoutes />
+      </div>
     </React.Fragment>
   );
 }
