@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import ROUTE_CONSTANTS from "../../constants/route-constants";
+import ROUTE_CONSTANTS from "../../constants/routeConstants";
 import PrivateRoute from "./PrivateRoute";
 import Home from "../Home";
 import AuthForm from "../AuthForm";

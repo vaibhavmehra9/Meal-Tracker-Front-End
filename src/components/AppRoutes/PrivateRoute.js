@@ -1,6 +1,6 @@
 import React from "react";
 import { Redirect, Route } from "react-router-dom";
-import ROUTE_CONSTANTS from "../../constants/route-constants";
+import ROUTE_CONSTANTS from "../../constants/routeConstants";
 
 const PrivateRoute = ({ component: Component, exact, path }) => {
   const isUserLoggedIn = false;
