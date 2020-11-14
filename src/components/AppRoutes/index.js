@@ -11,6 +11,11 @@ const AppRoutes = () => {
       <Switch>
         <PrivateRoute exact path={ROUTE_CONSTANTS.HOME} component={Home} />
         <Route exact path={ROUTE_CONSTANTS.LOGIN} component={AuthForm} />
+        <Route
+          exact
+          path={ROUTE_CONSTANTS.SIGN_UP}
+          component={AuthForm}
+        ></Route>
       </Switch>
     </Router>
   );

@@ -1,16 +1,14 @@
 import React from "react";
+import Login from "../Login";
 import AuthFormStyle from "./style";
 
 const AuthForm = ({ title = "Login", authMode = "login" }) => {
   return (
     <AuthFormStyle>
-      <h3>{title}</h3>
+      <h3 className="auth-form-title">{title}</h3>
+      <Login />
     </AuthFormStyle>
   );
 };
-
-const Login = () => {};
-
-const SignUp = () => {};
 
 export default AuthForm;
