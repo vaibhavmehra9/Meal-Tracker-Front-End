@@ -11,6 +11,7 @@ const initState = {
   loading: false,
   error: null,
   newUserLoading: false,
+  userLogOutLoading: false,
 };
 
 const authReducer = (state = initState, action) => {
@@ -47,6 +48,11 @@ const authReducer = (state = initState, action) => {
     case AUTH_ACTION_TYPES.SIGN_UP_USER_LOADING:
       return updateOldObject(state, {
         newUserLoading: payload,
+      });
+
+    case AUTH_ACTION_TYPES.LOGGIN_OUT_USER:
+      return updateOldObject(state, {
+        userLogOutLoading: payload,
       });
 
     default:

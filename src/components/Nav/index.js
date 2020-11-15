@@ -4,16 +4,18 @@ import NavStyle from "./style";
 import { connect } from "react-redux";
 import * as authActions from "../../store/actions/authActions";
 
-const Nav = ({ auth: { user, token } }) => {
+const Nav = ({ auth: { token, userLogOutLoading }, logOutUser }) => {
   return (
     <NavStyle>
       <div className="nav-container">
         <h3>Meal Tracker</h3>
         <div>
-          {token ? (
-            <Button text="Logout" />
-          ) : (
-            <Button text="Login In / Sign Up" />
+          {token && (
+            <Button
+              text="Logout"
+              onClickHandler={() => logOutUser()}
+              isLoading={userLogOutLoading}
+            />
           )}
         </div>
       </div>

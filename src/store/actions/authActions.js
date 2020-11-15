@@ -46,6 +46,13 @@ export const signUpUserLoading = (value) => {
   };
 };
 
+export const logOutUserLoading = (value) => {
+  return {
+    type: AUTH_ACTION_TYPES.LOGGIN_OUT_USER,
+    payload: value,
+  };
+};
+
 export const logInUser = (authData) => async (dispatch) => {
   try {
     dispatch(authStart());
@@ -84,5 +91,22 @@ export const signUpUser = (userData, history) => async (dispatch) => {
     console.log(err);
   } finally {
     dispatch(signUpUserLoading(false));
+  }
+};
+
+export const logOutUser = () => async (dispatch) => {
+  try {
+    dispatch(logOutUserLoading(true));
+    await Service.getRequest(AUTH_API.LOGOUT, {
+      headers: {
+        Authorization: `Bearer ${AppStorage.get(APP_LOCAL_STORAGE.TOKEN)}`,
+      },
+    });
+    AppStorage.remove(APP_LOCAL_STORAGE.TOKEN);
+    window.location = ROUTE_CONSTANTS.LOGIN;
+  } catch (err) {
+    console.log(err);
+  } finally {
+    dispatch(logOutUserLoading(false));
   }
 };
