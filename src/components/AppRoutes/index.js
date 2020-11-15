@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ROUTE_CONSTANTS from "../../constants/routeConstants";
 import PrivateRoute from "./PrivateRoute";
 import Home from "../Home";
-import AuthForm from "../AuthForm";
+import AuthForm from "../Auth";
 
 const AppRoutes = () => {
   return (
