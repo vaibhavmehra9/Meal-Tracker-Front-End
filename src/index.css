@@ -12,12 +12,14 @@
   --light-blue: #bfcfff;
   --white: #ffffff;
   --black: #22223b;
-  line-height: 2;
+  --green: #36b336;
+  --red: #b33636;
 }
 
 html {
   font-family: "Open Sans", sans-serif;
   font-size: 14px;
+  line-height: 2;
   color: var(--black);
 }
 

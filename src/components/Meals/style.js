@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const MealsStyle = styled.div`
-  margin: 40px 0 0 0;
+  margin: 20px 0 0 0;
   .meals-list {
     margin: 20px 0 0 0;
   }

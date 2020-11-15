@@ -5,8 +5,13 @@ const MealItem = ({ meal }) => {
   const { mealName, calorieCount } = meal;
   return (
     <MealItemStyle>
-      <h2>{mealName}</h2>
-      <p>Calorie - {calorieCount}</p>
+      <h3>{mealName}</h3>
+      <span
+        className="calorie-tag"
+        style={calorieCount >= 2000 ? { background: "var(--green)" } : {}}
+      >
+        Calorie - {calorieCount}
+      </span>
     </MealItemStyle>
   );
 };

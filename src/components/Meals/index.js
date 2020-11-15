@@ -20,6 +20,8 @@ const Meals = ({
     return <Loader fullPage />;
   }
 
+  if (!loadingMeals && meals.length === 0) return null;
+
   return (
     <MealsStyle>
       <h2>Meals</h2>

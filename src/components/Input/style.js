@@ -8,7 +8,7 @@ const InputStyle = styled.div`
     padding: 12px;
     border-radius: 4px;
     outline: 0;
-    border: 1px solid var(--light-blue);
+    border: 2px solid var(--light-blue);
     font-size: 1rem;
     color: var(--black);
     font-size: normal;

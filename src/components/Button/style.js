@@ -11,8 +11,7 @@ const ButtonStyle = styled.button`
   padding: 10px;
   color: ${(props) => (props.color ? props.color : "var(--white)")};
   padding: 12px 18px;
-  border-radius: 6px;
-  border: 1px solid;
+  border-radius: 4px;
   &:disabled {
     cursor: not-allowed;
     opacity: 0.7;
