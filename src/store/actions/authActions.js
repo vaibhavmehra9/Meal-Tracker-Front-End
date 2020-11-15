@@ -24,6 +24,20 @@ export const authFail = (error) => {
   };
 };
 
+export const loadingUser = (value) => {
+  return {
+    type: AUTH_ACTION_TYPES.LOADING_USER,
+    payload: value,
+  };
+};
+
+export const setUser = (userData) => {
+  return {
+    type: AUTH_ACTION_TYPES.SET_USER,
+    payload: userData,
+  };
+};
+
 export const logInUser = (authData) => async (dispatch) => {
   try {
     dispatch(authStart());
@@ -33,5 +47,21 @@ export const logInUser = (authData) => async (dispatch) => {
     dispatch(authSuccess(token));
   } catch (err) {
     dispatch(authFail(err.message));
+  }
+};
+
+export const getUserDetails = () => async (dispatch) => {
+  try {
+    dispatch(loadingUser(true));
+    const response = await Service.getRequest(AUTH_API.WHO_AM_I, {
+      headers: {
+        Authorization: `Bearer ${AppStorage.get(APP_LOCAL_STORAGE.TOKEN)}`,
+      },
+    });
+    const { user } = response && response.data && response.data.data;
+    dispatch(setUser(user));
+  } catch (err) {
+  } finally {
+    dispatch(loadingUser(false));
   }
 };

@@ -15,7 +15,7 @@ const AppRoutes = () => {
           exact
           path={ROUTE_CONSTANTS.SIGN_UP}
           component={AuthForm}
-        ></Route>
+        />
       </Switch>
     </Router>
   );
