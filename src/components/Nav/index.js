@@ -1,18 +1,27 @@
 import React from "react";
 import Button from "../Button";
 import NavStyle from "./style";
+import { connect } from "react-redux";
+import * as authActions from "../../store/actions/authActions";
 
-const Nav = () => {
+const Nav = ({ auth: { user, token } }) => {
   return (
     <NavStyle>
       <div className="nav-container">
         <h4>Meal Tracker</h4>
         <div>
-          <Button text="Login In / Sign Up"></Button>
+          {token ? (
+            <Button text="Logout" />
+          ) : (
+            <Button text="Login In / Sign Up" />
+          )}
         </div>
       </div>
     </NavStyle>
   );
 };
+const mapStateToProps = (state) => {
+  return { auth: state.auth };
+};
 
-export default Nav;
+export default connect(mapStateToProps, { ...authActions })(Nav);
