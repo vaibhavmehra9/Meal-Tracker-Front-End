@@ -1,0 +1,6 @@
+const POP_UP_ACTION_TYPES = {
+  OPEN_POP_UP: "OPEN_POP_UP",
+  CLOSE_POP_UP: "CLOSE_POP_UP",
+};
+
+export default POP_UP_ACTION_TYPES;

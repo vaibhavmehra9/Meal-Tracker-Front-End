@@ -12,6 +12,7 @@
   --light-blue: #bfcfff;
   --white: #ffffff;
   --black: #22223b;
+  line-height: 2;
 }
 
 html {
@@ -30,4 +31,21 @@ html {
 .link {
   color: var(--dark-blue);
   font-size: 12px;
+}
+
+.popup {
+  max-width: 500px;
+  padding: 30px;
+  border-radius: 10px;
+  font-size: 14px;
+  background: white;
+}
+.popup-overlay {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.popup-action {
+  margin: 30px 0 0 0;
+  display: flex;
+  justify-content: flex-end;
 }

@@ -7,9 +7,15 @@ const Button = ({
   text = "",
   isLoading = false,
   onClickHandler,
+  ...otherProps
 }) => {
   return (
-    <ButtonStyle type={type} disabled={isLoading} onClick={onClickHandler}>
+    <ButtonStyle
+      type={type}
+      disabled={isLoading}
+      onClick={onClickHandler}
+      {...otherProps}
+    >
       {isLoading ? <Loader color="var(--white)" size={20} /> : text}
     </ButtonStyle>
   );
