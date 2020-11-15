@@ -3,6 +3,7 @@ import Service from "../../service";
 import AUTH_ACTION_TYPES from "../actionTypes/authActionTypes";
 import AppStorage from "../../utils/storage";
 import { APP_LOCAL_STORAGE } from "../../constants/storageConstants";
+import ROUTE_CONSTANTS from "../../constants/routeConstants";
 
 export const authStart = () => {
   return {
@@ -38,6 +39,13 @@ export const setUser = (userData) => {
   };
 };
 
+export const signUpUserLoading = (value) => {
+  return {
+    type: AUTH_ACTION_TYPES.SIGN_UP_USER_LOADING,
+    payload: value,
+  };
+};
+
 export const logInUser = (authData) => async (dispatch) => {
   try {
     dispatch(authStart());
@@ -61,7 +69,20 @@ export const getUserDetails = () => async (dispatch) => {
     const { user } = response && response.data && response.data.data;
     dispatch(setUser(user));
   } catch (err) {
+    console.log(err);
   } finally {
     dispatch(loadingUser(false));
+  }
+};
+
+export const signUpUser = (userData, history) => async (dispatch) => {
+  try {
+    dispatch(signUpUserLoading(true));
+    await Service.postRequest(AUTH_API.SIGN_UP, userData);
+    history.push(ROUTE_CONSTANTS.LOGIN);
+  } catch (err) {
+    console.log(err);
+  } finally {
+    dispatch(signUpUserLoading(false));
   }
 };

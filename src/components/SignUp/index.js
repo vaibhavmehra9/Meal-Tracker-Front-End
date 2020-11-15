@@ -6,12 +6,15 @@ import { connect } from "react-redux";
 import * as authActions from "../../store/actions/authActions";
 import { Link } from "react-router-dom";
 import ROUTE_CONSTANTS from "../../constants/routeConstants";
+import { useHistory } from "react-router-dom";
 
-const SignUp = ({ logInUser }) => {
+const SignUp = ({ auth: { newUserLoading }, signUpUser }) => {
+  const history = useHistory();
+
   const { register, handleSubmit, errors } = useForm();
 
   const onSubmit = (data) => {
-    logInUser(data);
+    signUpUser(data, history);
   };
 
   return (
@@ -74,7 +77,7 @@ const SignUp = ({ logInUser }) => {
         />
       </div>
       <div className="auth-form-fld">
-        <Button text="Log In" type="submit" />
+        <Button text="Log In" type="submit" isLoading={newUserLoading} />
       </div>
       <div>
         Already have an account ?{" "}
