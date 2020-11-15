@@ -10,6 +10,8 @@ const InputStyle = styled.div`
     outline: 0;
     border: 1px solid var(--light-blue);
     font-size: 1rem;
+    color: var(--black);
+    font-size: normal;
     &::placeholder {
       font-size: 1rem;
     }

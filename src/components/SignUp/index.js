@@ -19,7 +19,7 @@ const SignUp = ({ auth: { newUserLoading }, signUpUser }) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="auth-form-fld">
+      <div className="form-fld">
         <Input
           type="text"
           placeholder="First Name"
@@ -33,7 +33,7 @@ const SignUp = ({ auth: { newUserLoading }, signUpUser }) => {
           error={errors && errors.firstName && errors.firstName.message}
         />
       </div>
-      <div className="auth-form-fld">
+      <div className="form-fld">
         <Input
           type="text"
           placeholder="Last Name"
@@ -47,7 +47,7 @@ const SignUp = ({ auth: { newUserLoading }, signUpUser }) => {
           error={errors && errors.lastName && errors.lastName.message}
         />
       </div>
-      <div className="auth-form-fld">
+      <div className="form-fld">
         <Input
           type="email"
           placeholder="Email"
@@ -62,7 +62,7 @@ const SignUp = ({ auth: { newUserLoading }, signUpUser }) => {
           error={errors && errors.email && errors.email.message}
         />
       </div>
-      <div className="auth-form-fld">
+      <div className="form-fld">
         <Input
           type="password"
           placeholder="Password"
@@ -76,10 +76,10 @@ const SignUp = ({ auth: { newUserLoading }, signUpUser }) => {
           error={errors && errors.password && errors.password.message}
         />
       </div>
-      <div className="auth-form-fld">
-        <Button text="Log In" type="submit" isLoading={newUserLoading} />
+      <div className="form-fld">
+        <Button text="Sign Up" type="submit" isLoading={newUserLoading} />
       </div>
-      <div>
+      <div className="form-fld">
         Already have an account ?{" "}
         <Link to={ROUTE_CONSTANTS.LOGIN} className="link">
           Log In

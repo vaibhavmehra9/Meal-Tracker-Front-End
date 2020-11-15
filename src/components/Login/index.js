@@ -16,7 +16,7 @@ const Login = ({ logInUser }) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="auth-form-fld">
+      <div className="form-fld">
         <Input
           type="email"
           placeholder="Email"
@@ -31,7 +31,7 @@ const Login = ({ logInUser }) => {
           error={errors && errors.email && errors.email.message}
         />
       </div>
-      <div className="auth-form-fld">
+      <div className="form-fld">
         <Input
           type="password"
           placeholder="Password"
@@ -45,10 +45,10 @@ const Login = ({ logInUser }) => {
           error={errors && errors.password && errors.password.message}
         />
       </div>
-      <div className="auth-form-fld">
+      <div className="form-fld">
         <Button text="Log In" type="submit" />
       </div>
-      <div>
+      <div className="form-fld">
         New user ?{" "}
         <Link to={ROUTE_CONSTANTS.SIGN_UP} className="link">
           Sign Up

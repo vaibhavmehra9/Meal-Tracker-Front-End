@@ -6,24 +6,9 @@ import * as popUpActions from "../../store/actions/popUpActions";
 
 const CommonPopUp = ({ popup: { open }, closePopUp, children }) => {
   return (
-    <PopUp open={open} modal>
+    <PopUp open={open} modal closeOnDocumentClick={false}>
       <div className="popup">
-        <div className="popup-content">
-          {children}
-          <div className="popup-action">
-            <div style={{ marginRight: "10px" }}>
-              <Button text="Save" />
-            </div>
-            <div>
-              <Button
-                text="Cancel"
-                background="var(--white)"
-                color="var(--blue)"
-                onClickHandler={closePopUp}
-              />
-            </div>
-          </div>
-        </div>
+        <div className="popup-content">{children}</div>
       </div>
     </PopUp>
   );

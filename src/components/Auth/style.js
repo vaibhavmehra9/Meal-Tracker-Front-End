@@ -6,8 +6,7 @@ const AuthFormStyle = styled.div`
   padding: 25px;
   border: 8px solid var(--light-blue);
   border-radius: 4px;
-  .auth-form-title,
-  .auth-form-fld {
+  .auth-form-title {
     margin: 0 0 25px 0;
   }
 `;

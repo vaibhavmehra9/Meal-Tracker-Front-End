@@ -2,7 +2,7 @@ import { updateOldObject } from "../../utils/utility";
 import POP_UP_ACTION_TYPES from "../actionTypes/popUpActionTypes";
 
 const initState = {
-  open: true,
+  open: false,
 };
 
 const popUpReducer = (state = initState, action) => {
