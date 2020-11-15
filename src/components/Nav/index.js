@@ -8,7 +8,7 @@ const Nav = ({ auth: { user, token } }) => {
   return (
     <NavStyle>
       <div className="nav-container">
-        <h4>Meal Tracker</h4>
+        <h3>Meal Tracker</h3>
         <div>
           {token ? (
             <Button text="Logout" />

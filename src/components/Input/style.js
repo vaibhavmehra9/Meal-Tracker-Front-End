@@ -8,12 +8,10 @@ const InputStyle = styled.div`
     padding: 12px;
     border-radius: 4px;
     outline: 0;
-    border: 1px solid #efefef;
-    height: 48px;
-    background: white;
-    font-size: 14px;
+    border: 1px solid var(--light-blue);
+    font-size: 1rem;
     &::placeholder {
-      font-size: 14px;
+      font-size: 1rem;
     }
   }
   .input-fld-error {

@@ -6,9 +6,18 @@
   box-sizing: border-box;
 }
 
+:root {
+  --blue: #0000ff;
+  --dark-blue: #002db3;
+  --light-blue: #bfcfff;
+  --white: #ffffff;
+  --black: #22223b;
+}
+
 html {
   font-family: "Open Sans", sans-serif;
-  font-size: 20px;
+  font-size: 14px;
+  color: var(--black);
 }
 
 .container {

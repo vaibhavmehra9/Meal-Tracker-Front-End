@@ -11,7 +11,7 @@ const AuthForm = ({ title = "Login", authMode = "login", auth: { token } }) => {
   }
   return (
     <AuthFormStyle>
-      <h3 className="auth-form-title">{title}</h3>
+      <h2 className="auth-form-title">{title}</h2>
       <Login />
     </AuthFormStyle>
   );
