@@ -1,0 +1,6 @@
+const MEAL_ACTION_TYPES = {
+  LOADING_MEALS: "LOADING_MEALS",
+  SET_MEALS: "SET_MEALS",
+};
+
+export default MEAL_ACTION_TYPES;
