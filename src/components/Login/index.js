@@ -4,6 +4,8 @@ import Input from "../Input";
 import { useForm } from "react-hook-form";
 import { connect } from "react-redux";
 import * as authActions from "../../store/actions/authActions";
+import { Link } from "react-router-dom";
+import ROUTE_CONSTANTS from "../../constants/routeConstants";
 
 const Login = ({ logInUser }) => {
   const { register, handleSubmit, errors } = useForm();
@@ -43,7 +45,15 @@ const Login = ({ logInUser }) => {
           error={errors && errors.password && errors.password.message}
         />
       </div>
-      <Button text="Log In" type="submit" />
+      <div className="auth-form-fld">
+        <Button text="Log In" type="submit" />
+      </div>
+      <div>
+        New user ?{" "}
+        <Link to={ROUTE_CONSTANTS.SIGN_UP} className="link">
+          Sign Up
+        </Link>
+      </div>
     </form>
   );
 };

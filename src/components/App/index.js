@@ -10,7 +10,7 @@ function App({ auth: { token, loading }, getUserDetails }) {
     if (token) {
       getUserDetails();
     }
-  }, []);
+  }, [getUserDetails, token]);
   return (
     <React.Fragment>
       <Nav />

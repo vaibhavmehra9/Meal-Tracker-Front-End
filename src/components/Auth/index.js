@@ -1,5 +1,6 @@
 import React from "react";
 import Login from "../Login";
+import SignUp from "../SignUp";
 import AuthFormStyle from "./style";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
@@ -12,7 +13,7 @@ const AuthForm = ({ title = "Login", authMode = "login", auth: { token } }) => {
   return (
     <AuthFormStyle>
       <h2 className="auth-form-title">{title}</h2>
-      <Login />
+      {authMode === "login" ? <Login /> : <SignUp />}
     </AuthFormStyle>
   );
 };

@@ -26,3 +26,8 @@ html {
   max-width: 1170px;
   padding: 40px 0;
 }
+
+.link {
+  color: var(--dark-blue);
+  font-size: 12px;
+}
