@@ -24,7 +24,7 @@ const Meals = ({
 
   return (
     <MealsStyle>
-      <h2>Meals</h2>
+      <h2>Your Meals</h2>
       <div className="meals-list">
         {meals.map((meal) => (
           <MealItem key={meal._id} meal={meal} />
