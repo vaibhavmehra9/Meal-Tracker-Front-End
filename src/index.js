@@ -1,13 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/App";
-import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import { createStore, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";
 import rootReducer from "./store/rootReducer";
 import thunk from "redux-thunk";
 import netWorkInterceptor from "./utils/networkInterceptor";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "./index.css";
+
+toast.configure({
+  hideProgressBar: true,
+  autoClose: 2500,
+});
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
