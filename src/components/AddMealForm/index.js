@@ -55,7 +55,6 @@ const AddMealForm = ({
           </div>
           <div className="form-fld">
             <Input
-              type="number"
               placeholder="Meal Calorie"
               refProp={register({
                 required: {
@@ -63,6 +62,7 @@ const AddMealForm = ({
                   message: "Required",
                 },
               })}
+              type="number"
               name="calorieCount"
               error={
                 errors && errors.calorieCount && errors.calorieCount.message

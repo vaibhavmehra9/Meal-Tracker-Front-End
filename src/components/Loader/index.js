@@ -1,7 +1,7 @@
 import React from "react";
 import { ClipLoader } from "react-spinners";
 
-const Loader = ({ fullPage = false, ...otherProps }) => {
+const Loader = ({ fullPage = false, color = "var(--blue)", ...otherProps }) => {
   if (fullPage) {
     return (
       <div
@@ -12,11 +12,11 @@ const Loader = ({ fullPage = false, ...otherProps }) => {
           justifyContent: "center",
         }}
       >
-        <ClipLoader {...otherProps} />
+        <ClipLoader color={color} {...otherProps} />
       </div>
     );
   }
-  return <ClipLoader {...otherProps} />;
+  return <ClipLoader color={color} {...otherProps} />;
 };
 
 export default Loader;

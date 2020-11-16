@@ -5,6 +5,7 @@ import { BiEdit } from "react-icons/bi";
 import * as mealActions from "../../store/actions/mealActions";
 import { connect } from "react-redux";
 import * as popUpActions from "../../store/actions/popUpActions";
+import Loader from "../Loader";
 
 const MealItem = ({
   data,
@@ -12,6 +13,7 @@ const MealItem = ({
   openPopUp,
   toggleEditMealForm,
   auth: { user },
+  meal: { deletingMeal },
 }) => {
   const { mealName, calorieCount } = data;
 
@@ -30,7 +32,7 @@ const MealItem = ({
       </span>
       <div className="meal-item">
         <h3>{mealName}</h3>
-        <div>
+        <div style={{ display: "flex", alignItems: "center" }}>
           <BiEdit
             style={{
               fontSize: "25px",
@@ -40,10 +42,18 @@ const MealItem = ({
             }}
             onClick={onEditMealItemClickHandler}
           />
-          <MdDelete
-            style={{ fontSize: "25px", color: "var(--red)", cursor: "pointer" }}
-            onClick={() => removeMeal(user._id, data._id)}
-          />
+          {deletingMeal ? (
+            <Loader color="var(--blue)" size={15} />
+          ) : (
+            <MdDelete
+              style={{
+                fontSize: "25px",
+                color: "var(--red)",
+                cursor: "pointer",
+              }}
+              onClick={() => removeMeal(user._id, data._id)}
+            />
+          )}
         </div>
       </div>
     </MealItemStyle>
