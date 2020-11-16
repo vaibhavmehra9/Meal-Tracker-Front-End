@@ -51,3 +51,13 @@ html {
 .form-fld {
   margin: 25px 0 0 0;
 }
+
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+  .popup {
+    max-width: 100%;
+    min-width: 100%;
+  }
+}

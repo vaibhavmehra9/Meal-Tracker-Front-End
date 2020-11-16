@@ -11,9 +11,9 @@ const UserInfo = ({ auth: { user }, openPopUp }) => {
   }
   return (
     <UserInfoStyle>
-      <h1>
+      <h2>
         Hi {firstName} {lastName}
-      </h1>
+      </h2>
       <div>
         <Button text="Add Meal" onClickHandler={openPopUp} />
       </div>
