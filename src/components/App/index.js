@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import * as authActions from "../../store/actions/authActions";
 import Loader from "../Loader";
 
-function App({ auth: { token, loading }, getUserDetails }) {
+function App({ auth: { token, loadingUser }, getUserDetails }) {
   React.useEffect(() => {
     if (token) {
       getUserDetails();
@@ -15,7 +15,7 @@ function App({ auth: { token, loading }, getUserDetails }) {
     <React.Fragment>
       <Nav />
       <div className="container">
-        {loading ? <Loader fullPage /> : <AppRoutes />}
+        {loadingUser ? <Loader fullPage /> : <AppRoutes />}
       </div>
     </React.Fragment>
   );

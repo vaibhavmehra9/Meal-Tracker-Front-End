@@ -7,7 +7,7 @@ import * as authActions from "../../store/actions/authActions";
 import { Link } from "react-router-dom";
 import ROUTE_CONSTANTS from "../../constants/routeConstants";
 
-const Login = ({ logInUser }) => {
+const Login = ({ auth: { loading }, logInUser }) => {
   const { register, handleSubmit, errors } = useForm();
 
   const onSubmit = (data) => {
@@ -46,7 +46,7 @@ const Login = ({ logInUser }) => {
         />
       </div>
       <div className="form-fld">
-        <Button text="Log In" type="submit" />
+        <Button text="Log In" type="submit" isLoading={loading} />
       </div>
       <div className="form-fld">
         New user ?{" "}
