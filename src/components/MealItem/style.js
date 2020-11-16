@@ -18,6 +18,19 @@ const MealItemStyle = styled.div`
     top: -50px;
     top: -11px;
   }
+  .meal-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .meal-remove-btn {
+    background: var(--red);
+    border: 0;
+    outline: 0;
+    padding: 4px;
+    border-radius: 2px;
+    color: white;
+  }
 `;
 
 export default MealItemStyle;

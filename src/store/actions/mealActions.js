@@ -19,6 +19,14 @@ export const setNewMeal = (meal) => {
   return { type: MEAL_ACTION_TYPES.SET_NEW_MEAL, payload: meal };
 };
 
+export const deletingMeal = (value) => {
+  return { type: MEAL_ACTION_TYPES.DELETING_MEALS, payload: value };
+};
+
+export const deleteMeal = (mealId) => {
+  return { type: MEAL_ACTION_TYPES.DELETE_MEAL, payload: mealId };
+};
+
 export const fetchMeals = (userId) => async (dispatch) => {
   try {
     dispatch(loadingMeals(true));
@@ -48,5 +56,17 @@ export const addMeal = (mealData, userId) => async (dispatch) => {
     console.log(err);
   } finally {
     dispatch(addingMeals(false));
+  }
+};
+
+export const removeMeal = (userId, mealId) => async (dispatch) => {
+  try {
+    dispatch(deletingMeal(true));
+    await Service.deleteRequest(`${USERS_API.USER}/${userId}/meals/${mealId}`);
+    dispatch(deleteMeal(mealId));
+  } catch (err) {
+    console.log(err);
+  } finally {
+    dispatch(deletingMeal(false));
   }
 };

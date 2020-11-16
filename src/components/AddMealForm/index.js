@@ -10,7 +10,7 @@ import { connect } from "react-redux";
 const AddMealForm = ({
   addMeal,
   auth: { user },
-  meal: { newMealAdded },
+  meal: { newMealAdded, addingMeal },
   closePopUp,
 }) => {
   const { register, handleSubmit, errors } = useForm();
@@ -72,7 +72,7 @@ const AddMealForm = ({
             />
           </div>
           <div className="form-fld">
-            <Button text="Add" type="submit" />
+            <Button text="Add" type="submit" isLoading={addingMeal} />
           </div>
         </form>
       </div>

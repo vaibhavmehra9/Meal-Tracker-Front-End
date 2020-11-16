@@ -13,6 +13,9 @@ class Service {
   patchRequest(url, data, config = {}) {
     return Axios.patch(url, data, config);
   }
+  deleteRequest(url) {
+    return Axios.delete(url);
+  }
 }
 
 export default new Service();

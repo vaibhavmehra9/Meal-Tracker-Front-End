@@ -27,7 +27,7 @@ const Meals = ({
       <h2>Your Meals</h2>
       <div className="meals-list">
         {meals.map((meal) => (
-          <MealItem key={meal._id} meal={meal} />
+          <MealItem key={meal._id} data={meal} />
         ))}
       </div>
     </MealsStyle>
