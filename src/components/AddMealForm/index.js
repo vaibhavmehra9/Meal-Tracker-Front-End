@@ -6,27 +6,37 @@ import Button from "../Button";
 import * as mealActions from "../../store/actions/mealActions";
 import * as popUpActions from "../../store/actions/popUpActions";
 import { connect } from "react-redux";
+import moment from "moment";
 
 const AddMealForm = ({
   addMeal,
   auth: { user },
-  meal: { newMealAdded, addingMeal },
+  meal: { addingMeal, editMode, mealData, updatingMeal },
+  updateMeal,
   closePopUp,
+  toggleEditMealForm,
 }) => {
   const { register, handleSubmit, errors } = useForm();
 
   const onSubmit = (values) => {
-    addMeal(values, user._id);
+    if (editMode) {
+      updateMeal(user._id, mealData._id, values);
+    } else {
+      addMeal(values, user._id);
+    }
   };
 
-  if (newMealAdded) {
+  const { mealName, calorieCount, date } = mealData;
+
+  const onClickPopUpClose = () => {
     closePopUp();
-  }
+    toggleEditMealForm(false, {});
+  };
 
   return (
-    <CommonPopUp>
+    <CommonPopUp onClickCloseHanlder={onClickPopUpClose}>
       <div>
-        <h2>Add Meal</h2>
+        <h2>{editMode ? "Edit Meal" : "Add Meal"}</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="form-fld">
             <Input
@@ -40,6 +50,7 @@ const AddMealForm = ({
               })}
               name="mealName"
               error={errors && errors.mealName && errors.mealName.message}
+              defaultValue={mealName || ""}
             />
           </div>
           <div className="form-fld">
@@ -56,6 +67,7 @@ const AddMealForm = ({
               error={
                 errors && errors.calorieCount && errors.calorieCount.message
               }
+              defaultValue={calorieCount || ""}
             />
           </div>
           <div className="form-fld">
@@ -69,10 +81,15 @@ const AddMealForm = ({
               })}
               name="date"
               error={errors && errors.date && errors.date.message}
+              defaultValue={date ? moment(date).format("YYYY-MM-DD") : ""}
             />
           </div>
           <div className="form-fld">
-            <Button text="Add" type="submit" isLoading={addingMeal} />
+            <Button
+              text="Save"
+              type="submit"
+              isLoading={addingMeal || updatingMeal}
+            />
           </div>
         </form>
       </div>

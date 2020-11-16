@@ -6,6 +6,9 @@ const initState = {
   loadingMeals: false,
   addingMeal: false,
   deletingMeal: false,
+  editMode: false,
+  mealData: {},
+  updatingMeal: false,
 };
 
 const mealReducer = (state = initState, action) => {
@@ -33,6 +36,27 @@ const mealReducer = (state = initState, action) => {
     case MEAL_ACTION_TYPES.DELETE_MEAL:
       return updateOldObject(state, {
         meals: state.meals.filter((item) => item._id !== payload),
+      });
+
+    case MEAL_ACTION_TYPES.TOGGLE_EDIT_MEAL:
+      return updateOldObject(state, {
+        editMode: payload.editMode,
+        mealData: { ...payload.mealData },
+      });
+
+    case MEAL_ACTION_TYPES.UPDATING_MEAL:
+      return updateOldObject(state, {
+        updatingMeal: payload,
+      });
+
+    case MEAL_ACTION_TYPES.SET_UPDATED_MEAL:
+      return updateOldObject(state, {
+        meals: state.meals.map((item) => {
+          if (item._id === payload._id) {
+            return payload;
+          }
+          return item;
+        }),
       });
 
     default:

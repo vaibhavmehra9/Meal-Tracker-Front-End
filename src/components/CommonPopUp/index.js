@@ -4,12 +4,15 @@ import { connect } from "react-redux";
 import * as popUpActions from "../../store/actions/popUpActions";
 import { GrClose } from "react-icons/gr";
 
-const CommonPopUp = ({ popup: { open }, closePopUp, children }) => {
+const CommonPopUp = ({ popup: { open }, onClickCloseHanlder, children }) => {
   return (
     <PopUp open={open} modal closeOnDocumentClick={false}>
       <div className="popup">
         <div style={{ display: "flex", justifyContent: "flex-end" }}>
-          <GrClose onClick={closePopUp} style={{ cursor: "pointer" }} />
+          <GrClose
+            onClick={onClickCloseHanlder}
+            style={{ cursor: "pointer" }}
+          />
         </div>
         <div className="popup-content">{children}</div>
       </div>

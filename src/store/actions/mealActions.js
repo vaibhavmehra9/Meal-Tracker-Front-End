@@ -3,6 +3,8 @@ import Service from "../../service";
 import { USERS_API } from "../../constants/apiConstants";
 import { closePopUp } from "./popUpActions";
 
+// action creators
+
 export const loadingMeals = (value) => {
   return { type: MEAL_ACTION_TYPES.LOADING_MEALS, payload: value };
 };
@@ -26,6 +28,23 @@ export const deletingMeal = (value) => {
 export const deleteMeal = (mealId) => {
   return { type: MEAL_ACTION_TYPES.DELETE_MEAL, payload: mealId };
 };
+
+export const toggleEditMealForm = (value, mealData = {}) => {
+  return {
+    type: MEAL_ACTION_TYPES.TOGGLE_EDIT_MEAL,
+    payload: { editMode: value, mealData },
+  };
+};
+
+export const updatingMeal = (value) => {
+  return { type: MEAL_ACTION_TYPES.UPDATING_MEAL, payload: value };
+};
+
+export const setUpdatedMeal = (meal) => {
+  return { type: MEAL_ACTION_TYPES.SET_UPDATED_MEAL, payload: meal };
+};
+
+// async functions for api calls
 
 export const fetchMeals = (userId) => async (dispatch) => {
   try {
@@ -51,11 +70,12 @@ export const addMeal = (mealData, userId) => async (dispatch) => {
     );
     const { meal } = response && response.data && response.data.data;
     dispatch(setNewMeal(meal));
-    dispatch(closePopUp());
   } catch (err) {
     console.log(err);
   } finally {
     dispatch(addingMeals(false));
+    dispatch(toggleEditMealForm(false, {}));
+    dispatch(closePopUp());
   }
 };
 
@@ -68,5 +88,24 @@ export const removeMeal = (userId, mealId) => async (dispatch) => {
     console.log(err);
   } finally {
     dispatch(deletingMeal(false));
+  }
+};
+
+export const updateMeal = (userId, mealId, mealData) => async (dispatch) => {
+  try {
+    dispatch(updatingMeal(true));
+    console.log(userId, mealId);
+    const response = await Service.putRequest(
+      `${USERS_API.USER}/${userId}/meals/${mealId}`,
+      mealData
+    );
+    const { meal } = response && response.data && response.data.data;
+    dispatch(setUpdatedMeal(meal));
+  } catch (err) {
+    console.log(err);
+  } finally {
+    dispatch(updatingMeal(false));
+    dispatch(toggleEditMealForm(false, {}));
+    dispatch(closePopUp());
   }
 };
