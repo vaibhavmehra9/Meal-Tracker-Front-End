@@ -2,6 +2,7 @@ import MEAL_ACTION_TYPES from "../actionTypes/mealActionTypes";
 import Service from "../../service";
 import { USERS_API } from "../../constants/apiConstants";
 import { closePopUp } from "./popUpActions";
+import showToast from "../../utils/toast";
 
 // action creators
 
@@ -70,6 +71,7 @@ export const addMeal = (mealData, userId) => async (dispatch) => {
     );
     const { meal } = response && response.data && response.data.data;
     dispatch(setNewMeal(meal));
+    showToast("Meal added", "success");
   } catch (err) {
     console.log(err);
   } finally {
@@ -94,13 +96,13 @@ export const removeMeal = (userId, mealId) => async (dispatch) => {
 export const updateMeal = (userId, mealId, mealData) => async (dispatch) => {
   try {
     dispatch(updatingMeal(true));
-    console.log(userId, mealId);
     const response = await Service.putRequest(
       `${USERS_API.USER}/${userId}/meals/${mealId}`,
       mealData
     );
     const { meal } = response && response.data && response.data.data;
     dispatch(setUpdatedMeal(meal));
+    showToast("Meal updated", "success");
   } catch (err) {
     console.log(err);
   } finally {
