@@ -4,3 +4,11 @@ export const updateOldObject = (oldObj, newUpdateVal) => {
     ...newUpdateVal,
   };
 };
+
+export const getTotalCalories = (meals = []) => {
+  let count = 0;
+  meals.forEach((meal) => {
+    count += meal.calorieCount;
+  });
+  return count;
+};

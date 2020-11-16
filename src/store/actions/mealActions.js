@@ -71,7 +71,7 @@ export const addMeal = (mealData, userId) => async (dispatch) => {
     );
     const { meal } = response && response.data && response.data.data;
     dispatch(setNewMeal(meal));
-    showToast("Meal added", "success");
+    showToast("Great! you have added a meal for your day", "success");
   } catch (err) {
     console.log(err);
   } finally {
@@ -102,7 +102,7 @@ export const updateMeal = (userId, mealId, mealData) => async (dispatch) => {
     );
     const { meal } = response && response.data && response.data.data;
     dispatch(setUpdatedMeal(meal));
-    showToast("Meal updated", "success");
+    showToast("You have updated your meal", "success");
   } catch (err) {
     console.log(err);
   } finally {

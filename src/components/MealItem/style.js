@@ -10,7 +10,6 @@ const MealItemStyle = styled.div`
   .calorie-tag {
     position: absolute;
     font-size: 11px;
-    background: var(--red);
     color: wheat;
     color: white;
     padding: 2px 8px;

@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import * as mealActions from "../../store/actions/mealActions";
+import { getTotalCalories } from "../../utils/utility";
 import Loader from "../Loader";
 import MealItem from "../MealItem";
 import MealsStyle from "./style";
@@ -27,7 +28,11 @@ const Meals = ({
       <h2>Your Meals</h2>
       <div className="meals-list">
         {meals.map((meal) => (
-          <MealItem key={meal._id} data={meal} />
+          <MealItem
+            key={meal._id}
+            data={meal}
+            totalCalories={getTotalCalories(meals)}
+          />
         ))}
       </div>
     </MealsStyle>
