@@ -68,11 +68,7 @@ export const logInUser = (authData) => async (dispatch) => {
 export const getUserDetails = () => async (dispatch) => {
   try {
     dispatch(loadingUser(true));
-    const response = await Service.getRequest(AUTH_API.WHO_AM_I, {
-      headers: {
-        Authorization: `Bearer ${AppStorage.get(APP_LOCAL_STORAGE.TOKEN)}`,
-      },
-    });
+    const response = await Service.getRequest(AUTH_API.WHO_AM_I);
     const { user } = response && response.data && response.data.data;
     dispatch(setUser(user));
   } catch (err) {
@@ -97,11 +93,7 @@ export const signUpUser = (userData, history) => async (dispatch) => {
 export const logOutUser = () => async (dispatch) => {
   try {
     dispatch(logOutUserLoading(true));
-    await Service.getRequest(AUTH_API.LOGOUT, {
-      headers: {
-        Authorization: `Bearer ${AppStorage.get(APP_LOCAL_STORAGE.TOKEN)}`,
-      },
-    });
+    await Service.getRequest(AUTH_API.LOGOUT);
     AppStorage.remove(APP_LOCAL_STORAGE.TOKEN);
     window.location = ROUTE_CONSTANTS.LOGIN;
   } catch (err) {

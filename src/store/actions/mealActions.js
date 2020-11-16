@@ -1,8 +1,6 @@
 import MEAL_ACTION_TYPES from "../actionTypes/mealActionTypes";
 import Service from "../../service";
 import { USERS_API } from "../../constants/apiConstants";
-import AppStorage from "../../utils/storage";
-import { APP_LOCAL_STORAGE } from "../../constants/storageConstants";
 import { closePopUp } from "./popUpActions";
 
 export const loadingMeals = (value) => {
@@ -25,12 +23,7 @@ export const fetchMeals = (userId) => async (dispatch) => {
   try {
     dispatch(loadingMeals(true));
     const response = await Service.getRequest(
-      `${USERS_API.USER}/${userId}/meals`,
-      {
-        headers: {
-          Authorization: `Bearer ${AppStorage.get(APP_LOCAL_STORAGE.TOKEN)}`,
-        },
-      }
+      `${USERS_API.USER}/${userId}/meals`
     );
     const { meals } = response && response.data && response.data.data;
     dispatch(setMeals(meals));
@@ -46,12 +39,7 @@ export const addMeal = (mealData, userId) => async (dispatch) => {
     dispatch(addingMeals(true));
     const response = await Service.postRequest(
       `${USERS_API.USER}/${userId}/meals`,
-      mealData,
-      {
-        headers: {
-          Authorization: `Bearer ${AppStorage.get(APP_LOCAL_STORAGE.TOKEN)}`,
-        },
-      }
+      mealData
     );
     const { meal } = response && response.data && response.data.data;
     dispatch(setNewMeal(meal));
