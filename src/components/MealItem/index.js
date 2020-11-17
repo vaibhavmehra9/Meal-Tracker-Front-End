@@ -6,7 +6,6 @@ import * as mealActions from "../../store/actions/mealActions";
 import { connect } from "react-redux";
 import * as popUpActions from "../../store/actions/popUpActions";
 import Loader from "../Loader";
-import moment from "moment";
 
 const MealItem = ({
   data,
@@ -15,9 +14,8 @@ const MealItem = ({
   toggleEditMealForm,
   auth: { user },
   meal: { deletingMeal },
-  totalCalories,
 }) => {
-  const { mealName, calorieCount, date } = data;
+  const { mealName, calorieCount } = data;
 
   const onEditMealItemClickHandler = () => {
     openPopUp();
@@ -26,20 +24,10 @@ const MealItem = ({
 
   return (
     <MealItemStyle>
-      <span
-        className="calorie-tag"
-        style={
-          totalCalories < 2000
-            ? { background: "var(--green)" }
-            : { background: "var(--red)" }
-        }
-      >
-        Calorie - {calorieCount}
-      </span>
       <div className="meal-item">
         <div>
           <h3>{mealName}</h3>
-          {date && <p>Meal added on:- {moment(date).format("Do MMMM YYYY")}</p>}
+          <p>Meal Calorie - {calorieCount}</p>
         </div>
         <div style={{ display: "flex", alignItems: "center" }}>
           <BiEdit

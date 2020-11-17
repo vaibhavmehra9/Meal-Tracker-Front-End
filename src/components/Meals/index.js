@@ -1,10 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
 import * as mealActions from "../../store/actions/mealActions";
-import { getTotalCalories } from "../../utils/utility";
+import { getTotalCalories, parseMeals } from "../../utils/utility";
 import Loader from "../Loader";
 import MealItem from "../MealItem";
 import MealsStyle from "./style";
+import moment from "moment";
 
 const Meals = ({
   meal: { meals, loadingMeals },
@@ -27,13 +28,32 @@ const Meals = ({
     <MealsStyle>
       <h2>Your Meals</h2>
       <div className="meals-list">
-        {meals.map((meal) => (
-          <MealItem
-            key={meal._id}
-            data={meal}
-            totalCalories={getTotalCalories(meals)}
-          />
-        ))}
+        {Object.entries(parseMeals(meals)).map(([date, meal]) => {
+          return (
+            <div key={date} className="meal-list-grp">
+              {date && <h3>{moment(date).format("Do MMMM YYYY")}</h3>}
+              <span
+                className="calorie-tag"
+                style={
+                  getTotalCalories(meal) < 2000
+                    ? { background: "var(--green)" }
+                    : {
+                        background: "var(--red)",
+                      }
+                }
+              >
+                Total Calorie Intake - {getTotalCalories(meal)}
+              </span>
+              {meal.map((i) => (
+                <MealItem
+                  key={i._id}
+                  data={i}
+                  totalCalories={getTotalCalories(meal)}
+                />
+              ))}
+            </div>
+          );
+        })}
       </div>
     </MealsStyle>
   );

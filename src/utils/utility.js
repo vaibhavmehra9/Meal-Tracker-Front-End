@@ -12,3 +12,15 @@ export const getTotalCalories = (meals = []) => {
   });
   return count;
 };
+
+export const parseMeals = (meals) => {
+  let mealsMap = {};
+  meals.forEach((meal) => {
+    if (mealsMap[meal.date]) {
+      mealsMap[meal.date] = [...mealsMap[meal.date], meal];
+    } else {
+      mealsMap[meal.date] = [meal];
+    }
+  });
+  return mealsMap;
+};
